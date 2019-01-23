@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage{amsmath,amssymb}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\R}{\mathbb{R}}
+\DeclareMathOperator*{\Q}{\mathbb{Q}}
+\DeclareMathOperator*{\N}{\mathbb{N}}
+\begin{document}
+MATH 131 Homework 2
+
+Jesse Cai
+
+304634445
+
+\begin{enumerate}
+    \item Prove that addition is associative.
+
+    We need to show $\forall a,b,c \in \N:  (a+b)+c = a+(b+c)$. To do this, we fix $a,b$ and do induction on $c$.
+
+    when $c=0$ we get 
+    $$ (a+b)+0 = a+(b+0) = a+b = a+(b) = a$$
+
+    Assume that it is true for 0, then 
+
+    $$ (a+b)+c = a+(b+c)$$
+    $$ (a+b) + S(c) = S((a+b)+c)  = S(a+(b+c)) = a + S(b+c) = a  + (b + S(c))$$
+    so it holds by induction
+
+
+    \item Prove that multiplication is commutative.
+    \item Show $\sqrt[3]{5 - \sqrt3}$ is not rational.
+
+        Assume that $\sqrt[3]{5 - \sqrt3} \in \Q $.  Then, $\left(\sqrt[3]{5 - \sqrt3}\right)^3 \in \Q$, since the rationals are closed under multiplication.
+        This means that $5 - \sqrt3 \in \Q$. But since $\Q$ is closed under addition and multiplication $-1(-5 + 5 - \sqrt3) \in \Q \implies \sqrt3 \in \Q$ which is a contradiction. Therefore $\sqrt[3]{5 - \sqrt3} \not \in \Q$.
+    \item Prove (v) $0<1$ and (vii) $\forall a,b, c \in \R 0 < a < b \implies 0 < b^{-1} < a^{-1}$
+    
+        To prove $0<1$ we will use (iv). Let $a = 1$, then by (iv) $0 < 1^2 \implies 0 < 1$
+
+        To prove (vii), notice by (vi) we get $ 0 < b^{-1} \land 0 < a^{-1}$, so we just need to show that $b^{-1} < a^{-1}$. 
+
+        By (iii) we get $ 0 < a^{-1} b^{-1}$ and we can use (i) to get $ -a^{-1}b^{-1} < -0$
+        We can apply (ii) with $ c = -a^{-1}b^{-1}$ to ge $b(c) \leq ac $ so 
+        $ - a^{-1} \leq -b{-1}$. But then we can apply (i) again to get $b^{-1} \leq a^{-1}$ 
+
+    \item Prove $\lvert a+b+c\rvert \leq \lvert a \rvert+\lvert b \rvert+\lvert c \rvert \forall a, b, c \in \R$
+        We showed that $a+b+c = (a+b)+c \implies \lvert a+b+c\rvert = \lvert (a+b)+c\rvert$
+        By triangle inequality we get $\lvert(a+b)+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert$ so 
+        $$
+            \lvert a+b+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert
+        $$
+        Again by triangle inequality,  $\lvert a+b\rvert \leq \lvert a\rvert + \lvert b \rvert$ so 
+        $$
+            \lvert a+b+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert \leq \lvert a\rvert + \lvert b\rvert + \lvert c\rvert
+        $$
+
+        TODO: part b
+
+    \item  Prove $ \inf S \leq \sup S $
+        b) $S$ is just one element
+
+    \item Let $S = \{ 1 \} $ and $T = \{1, 2\}$ then $S \cap T = \{ 1 \} \neq \emptyset$
+
+        Let $S = \{ r \in \Q : r^2 < 7 \} $ and $T = \{ r \in \Q : r^2 > 7 \}$ then $S \cap T = \emptyset$ and $\sup S = \inf T = \sqrt7$.
+
+    \item First we show $\{ \}$
+
+\end{enumerate}
+\end{document}
