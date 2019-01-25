@@ -13,6 +13,7 @@
 \DeclareMathOperator*{\N}{\mathbb{N}}
 \DeclareMathOperator*{\I}{\mathbb{I}}
 \begin{document}
+
 MATH 131 Homework 2
 
 Jesse Cai
@@ -70,7 +71,16 @@ Jesse Cai
         Let $S = \{ r \in \Q : r^2 < 7 \} $ and $T = \{ r \in \Q : r^2 > 7 \}$ then $S \cap T = \emptyset$ and $\sup S = \inf T = \sqrt7$.
 
     \item First we show $\{ r + \sqrt2 : r \in \Q\} \subset I$
-        Suppose there exists
+
+        Let $x \in \{ r + \sqrt2 : r \in \Q\}$ then x must be irrational, since the sum of a rational $r$ and an irrational $i$ is irrational $i+r$.
+
+        Suppose that it were rational, then $-r +(r+i) = i$ is a rational, but this is a contradiction.
+
+        now for any $a < b$ we can find a $r \in \Q : a - \sqrt2 < r < b - \sqrt2$,  so if we take $r + \sqrt2$ we get $a < r+\sqrt2 < b$ and $r+\sqrt2 \in I$.
+
+    \item  
+        To show $\sup(A+B) = \sup A + \sup B $, we will first show 
+
 
 \end{enumerate}
 \end{document}
