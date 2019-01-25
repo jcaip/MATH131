@@ -23,35 +23,51 @@ Jesse Cai
 \begin{enumerate}
     \item Prove that addition is associative.
 
-    We need to show $\forall a,b,c \in \N:  (a+b)+c = a+(b+c)$. To do this, we fix $a,b$ and do induction on $c$.
+        We need to show $\forall a,b,c \in \N:  (a+b)+c = a+(b+c)$. 
 
-    when $c=0$ we get 
-    $$ (a+b)+0 = a+(b+0) = a+b = a+(b) = a$$
+        We will use the definition of addition: $\forall n, m \in \N: n+S(m) = s(n+m)$, as well as P5 of the Peanno axioms.
+        Let $a,b$ be fixed and $P(n) = (a +b)+n = a+ (b+n)$.
 
-    Assume that it is true for 0, then 
+        Base case: $P(0)$ is TRUE by inspection.
+        $$(a+b)+0 = a+b = a+(b) = a+(b+0)$$
 
-    $$ (a+b)+c = a+(b+c)$$
-    $$ (a+b) + S(c) = S((a+b)+c)  = S(a+(b+c)) = a + S(b+c) = a  + (b + S(c))$$
-    so it holds by induction
+        Inductive step: Assume $P(n)$ is true, then consider $P(S(n))$
+        $$ (a+b) + S(n) = S((a+b)+n) =_{by P(n)} S(a+(b+n))  = a + S(b+c) = a  + (b + S(n))$$
+        so $P(n) \implies P(S(n))$ and by P5 $\forall n \in \N P(n)$ holds.
 
 
-    \item Prove that multiplication is commutative.
+    \item Prove $\forall m, n, r\in \N : m \leq n \implies r \cdot m \leq r \cdot n$.
+
+        Let $n, m$ be fixed and $P(r)  = m \leq n \implies r \cdot m \leq r \cdot $
+        Base case (r = 0):
+            If $n > m$ the implication holds be default otherwise $0 \cdot m = 0 = 0 \cdot n$ so this is TRUE.
+
+        Inductive step: Assume $P(r)$ is true, then consider $P(S(r))$
+        $$m \leq n \implies S(r) \cdot m \leq S(r) \cdot n$$
+        $$m \leq n \implies r \cdot m + m \leq r\cdot n + n$$
+
+        Either $m \leq n$ in which case $r \cdot m \leq r\cdot n \implies r \cdot m + m \leq r\cdot n + n$ or $m > n$, in which case the $P(r+1)$ is true by default. 
+
+        so $P(r) \implies P(S(r))$ and by P5 $\forall r \in \N P(r)$ holds.
+
+
     \item Show $\sqrt[3]{5 - \sqrt3}$ is not rational.
 
         Assume that $\sqrt[3]{5 - \sqrt3} \in \Q $.  Then, $\left(\sqrt[3]{5 - \sqrt3}\right)^3 \in \Q$, since the rationals are closed under multiplication.
-        This means that $5 - \sqrt3 \in \Q$. But since $\Q$ is closed under addition and multiplication $-1(-5 + 5 - \sqrt3) \in \Q \implies \sqrt3 \in \Q$ which is a contradiction. Therefore $\sqrt[3]{5 - \sqrt3} \not \in \Q$.
+        This means that $5 - \sqrt3 \in \Q$. But since $\Q$ is closed under subtraction $5 - (5 - \sqrt3) \in \Q \implies \sqrt3 \in \Q$ which is a contradiction of the RRT. Therefore $\sqrt[3]{5 - \sqrt3} \not \in \Q$.
     \item Prove (v) $0<1$ and (vii) $\forall a,b, c \in \R 0 < a < b \implies 0 < b^{-1} < a^{-1}$
     
         To prove $0<1$ we will use (iv). Let $a = 1$, then by (iv) $0 < 1^2 \implies 0 < 1$
 
-        To prove (vii), notice by (vi) we get $ 0 < b^{-1} \land 0 < a^{-1}$, so we just need to show that $b^{-1} < a^{-1}$. 
+        To prove (vii), notice by (vi) we get $ 0 < b^{-1} $ and $0 < a^{-1}$, so we just need to show that $b^{-1} < a^{-1}$. 
 
         By (iii) we get $ 0 < a^{-1} b^{-1}$ and we can use (i) to get $ -a^{-1}b^{-1} < -0$
-        We can apply (ii) with $ c = -a^{-1}b^{-1}$ to ge $b(c) \leq ac $ so 
+        We can apply (ii) with $ c = -a^{-1}b^{-1}$ to get $bc \leq ac $ so 
         $ - a^{-1} \leq -b{-1}$. But then we can apply (i) again to get $b^{-1} \leq a^{-1}$ 
 
-    \item Prove $\lvert a+b+c\rvert \leq \lvert a \rvert+\lvert b \rvert+\lvert c \rvert \forall a, b, c \in \R$
-        We showed that $a+b+c = (a+b)+c \implies \lvert a+b+c\rvert = \lvert (a+b)+c\rvert$
+    \item Prove $\forall a, b, c \in \R \lvert a+b+c\rvert \leq \lvert a \rvert+\lvert b \rvert+\lvert c \rvert $
+
+        Because addition is commutative $a+b+c = (a+b)+c \implies \lvert a+b+c\rvert = \lvert (a+b)+c\rvert$
         By triangle inequality we get $\lvert(a+b)+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert$ so 
         $$
             \lvert a+b+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert
@@ -61,25 +77,55 @@ Jesse Cai
             \lvert a+b+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert \leq \lvert a\rvert + \lvert b\rvert + \lvert c\rvert
         $$
 
-        TODO: part b
+        \textbf{Prove $\lvert a_1 + a_2 + \ldots + a_n \rvert \leq \lvert a_1 \rvert +\lvert a_2 \rvert +\ldots + \lvert a_n \rvert $}
+
+        Let $P(n) = \lvert a_1 + a_2 + \ldots + a_n \rvert \leq \lvert a_1 \rvert +\lvert a_2 \rvert +\ldots + \lvert a_n \rvert$
+
+        Base case: n=0 is trivial $\lvert emtpy \rvert$ = nothign 
+
+        Inductive step: Assume $P(n)$ is TRUE, then consider $P(n+1)$
+
+        $$
+            \lvert a_1 + a_2 + \ldots +a_n + a_{n+1} \rvert  = 
+            \lvert (a_1 + a_2 + \ldots +a_n) + a_{n+1} \rvert \leq
+            \lvert a_1+ a_2+\ldots +a_n \rvert + \lvert a_{n+1}\rvert = 
+            \lvert a_1 \rvert +\lvert a_2 \rvert +\ldots + \lvert a_n \rvert + \lvert a_{n+1}\rvert
+        $$
+
+        So $P(n) \implies P(n+1)$ and $\forall n \in \N P(n)$ holds.
+ 
+
 
     \item  Prove $ \inf S \leq \sup S $
-        b) $S$ is just one element
+
+        By definition $\forall x \in S. \sup S > x > \inf S$ so $\inf S \leq \sup S$.
+
+        What can you say about $S$ if $\inf S = \sup S$.
+        
+        $S$ is just one element.
 
     \item Let $S = \{ 1 \} $ and $T = \{1, 2\}$ then $S \cap T = \{ 1 \} \neq \emptyset$
 
         Let $S = \{ r \in \Q : r^2 < 7 \} $ and $T = \{ r \in \Q : r^2 > 7 \}$ then $S \cap T = \emptyset$ and $\sup S = \inf T = \sqrt7$.
 
-    \item First we show $\{ r + \sqrt2 : r \in \Q\} \subset I$
+    \item First we show $\{ r + \sqrt2 : r \in \Q\} \subset I$. By RRT we know that $\sqrt2 \not\in \Q$.
 
-        Let $x \in \{ r + \sqrt2 : r \in \Q\}$ then x must be irrational, since the sum of a rational $r$ and an irrational $i$ is irrational $i+r$.
+        Let $x \in \{ r + \sqrt2 : r \in \Q\}$. Suppose that $x = (r+i) \in \Q$ , then $(r+i) - r = i \in \Q$, since $\Q$ is closed under subtraction, but this is a contradiction of RRT, so therefore $x \not\in \Q \implies x \in I$.
 
-        Suppose that it were rational, then $-r +(r+i) = i$ is a rational, but this is a contradiction.
+        Now for any $a < b$ we can find a $r \in \Q : a - \sqrt2 < r < b - \sqrt2$, by the denseness of $\Q$ (Theorem 4.7). 
+        But then if we take $r + \sqrt2$ we get $a < r+\sqrt2 < b$ and we showed $r+\sqrt2 \in I$, so there will always exists an irrational number $a < i < b$.
 
-        now for any $a < b$ we can find a $r \in \Q : a - \sqrt2 < r < b - \sqrt2$,  so if we take $r + \sqrt2$ we get $a < r+\sqrt2 < b$ and $r+\sqrt2 \in I$.
+    \item Prove $\sup(A+B) = \sup A + \sup B $.
 
-    \item  
-        To show $\sup(A+B) = \sup A + \sup B $, we will first show 
+        To show $\sup(A+B) = \sup A + \sup B $, we will first show $\sup A + \sup B \geq\sup(A+B)$.
+
+        Let $x \in A+B : x =a+b  \leq \sup A  + \sup B$ since $\forall a \in A. a \leq \sup A$ and likewise $\forall b \in B. b \leq \sup B$.  So $\sup (A+B) \leq \sup A +  \sup B$.
+
+        Consider the set $A+\sup B = \{\forall a \in A: a+\sup B\}$. Clearly $A + \sup B \subset A+B $ so taking the suprema yields $\sup(A+\sup B)\leq \sup(A+B)$. 
+
+        But $\sup(A + \sup B) = \sup A + \sup B \leq \sup(A+B)$. So since 
+        $$\sup A + \sup B \leq \sup(A+B) \land \sup A + \sup B \geq \sup(A+B) \implies \sup A + \sup B = \sup(A+B)$$.
+
 
 
 \end{enumerate}
