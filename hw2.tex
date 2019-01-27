@@ -21,11 +21,11 @@ Jesse Cai
 304634445
 
 \begin{enumerate}
-    \item Prove that addition is associative.
+    \item \textbf{Prove that addition is associative.}
 
         We need to show $\forall a,b,c \in \N:  (a+b)+c = a+(b+c)$. 
 
-        We will use the definition of addition: $\forall n, m \in \N: n+S(m) = s(n+m)$, as well as P5 of the Peanno axioms.
+        We will use the definition of addition: $\forall n, m \in \N: n+S(m) = S(n+m)$, as well as P5 of the Peanno axioms.
         Let $a,b$ be fixed and $P(n) = (a +b)+n = a+ (b+n)$.
 
         Base case: $P(0)$ is TRUE by inspection.
@@ -36,7 +36,7 @@ Jesse Cai
         so $P(n) \implies P(S(n))$ and by P5 $\forall n \in \N P(n)$ holds.
 
 
-    \item Prove $\forall m, n, r\in \N : m \leq n \implies r \cdot m \leq r \cdot n$.
+    \item \textbf{Prove $\forall m, n, r\in \N : m \leq n \implies r \cdot m \leq r \cdot n$.}
 
         Let $n, m$ be fixed and $P(r)  = m \leq n \implies r \cdot m \leq r \cdot $
         Base case (r = 0):
@@ -46,16 +46,16 @@ Jesse Cai
         $$m \leq n \implies S(r) \cdot m \leq S(r) \cdot n$$
         $$m \leq n \implies r \cdot m + m \leq r\cdot n + n$$
 
-        Either $m \leq n$ in which case $r \cdot m \leq r\cdot n \implies r \cdot m + m \leq r\cdot n + n$ or $m > n$, in which case the $P(r+1)$ is true by default. 
+        Either $m \leq n$ in which case $r \cdot m \leq r\cdot n \implies r \cdot m + m \leq r\cdot n + n$ or $m > n$, in which case the $P(S(r))$ is true by default. 
 
         so $P(r) \implies P(S(r))$ and by P5 $\forall r \in \N P(r)$ holds.
 
 
-    \item Show $\sqrt[3]{5 - \sqrt3}$ is not rational.
+    \item \textbf{Show $\sqrt[3]{5 - \sqrt3}$ is not rational.}
 
         Assume that $\sqrt[3]{5 - \sqrt3} \in \Q $.  Then, $\left(\sqrt[3]{5 - \sqrt3}\right)^3 \in \Q$, since the rationals are closed under multiplication.
         This means that $5 - \sqrt3 \in \Q$. But since $\Q$ is closed under subtraction $5 - (5 - \sqrt3) \in \Q \implies \sqrt3 \in \Q$ which is a contradiction of the RRT. Therefore $\sqrt[3]{5 - \sqrt3} \not \in \Q$.
-    \item Prove (v) $0<1$ and (vii) $\forall a,b, c \in \R 0 < a < b \implies 0 < b^{-1} < a^{-1}$
+    \item \textbf{Prove (v) $0<1$ and (vii) $\forall a,b, c \in \R 0 < a < b \implies 0 < b^{-1} < a^{-1}$}
     
         To prove $0<1$ we will use (iv). Let $a = 1$, then by (iv) $0 < 1^2 \implies 0 < 1$
 
@@ -65,7 +65,7 @@ Jesse Cai
         We can apply (ii) with $ c = -a^{-1}b^{-1}$ to get $bc \leq ac $ so 
         $ - a^{-1} \leq -b{-1}$. But then we can apply (i) again to get $b^{-1} \leq a^{-1}$ 
 
-    \item Prove $\forall a, b, c \in \R \lvert a+b+c\rvert \leq \lvert a \rvert+\lvert b \rvert+\lvert c \rvert $
+    \item \textbf{Prove $\forall a, b, c \in \R \lvert a+b+c\rvert \leq \lvert a \rvert+\lvert b \rvert+\lvert c \rvert $}
 
         Because addition is commutative $a+b+c = (a+b)+c \implies \lvert a+b+c\rvert = \lvert (a+b)+c\rvert$
         By triangle inequality we get $\lvert(a+b)+c\rvert \leq \lvert a+b\rvert + \lvert c \rvert$ so 
@@ -96,26 +96,32 @@ Jesse Cai
  
 
 
-    \item  Prove $ \inf S \leq \sup S $
+    \item  \textbf{Prove $ \inf S \leq \sup S $}
 
         By definition $\forall x \in S. \sup S > x > \inf S$ so $\inf S \leq \sup S$.
 
-        What can you say about $S$ if $\inf S = \sup S$.
+        \textbf{What can you say about $S$ if $\inf S = \sup S$.}
         
         $S$ is just one element.
 
-    \item Let $S = \{ 1 \} $ and $T = \{1, 2\}$ then $S \cap T = \{ 1 \} \neq \emptyset$
+    \item \textbf{Give an example of $S$ and $T$ where $S \cap T \neq \emptyset$.} 
+        
+        Let $S = \{ 1 \} $ and $T = \{1, 2\}$ then $S \cap T = \{ 1 \} \neq \emptyset$
+
+        \textbf{Give an example of $S$ and $T$ where $S \cap T = \emptyset$ and $\sup S = \inf T$.} 
 
         Let $S = \{ r \in \Q : r^2 < 7 \} $ and $T = \{ r \in \Q : r^2 > 7 \}$ then $S \cap T = \emptyset$ and $\sup S = \inf T = \sqrt7$.
 
-    \item First we show $\{ r + \sqrt2 : r \in \Q\} \subset I$. By RRT we know that $\sqrt2 \not\in \Q$.
+    \item \textbf{Prove $a<b \implies \exists x \in I: a<x<b$}
+
+        First we show $\{ r + \sqrt2 : r \in \Q\} \subset I$. By RRT we know that $\sqrt2 \not\in \Q$.
 
         Let $x \in \{ r + \sqrt2 : r \in \Q\}$. Suppose that $x = (r+i) \in \Q$ , then $(r+i) - r = i \in \Q$, since $\Q$ is closed under subtraction, but this is a contradiction of RRT, so therefore $x \not\in \Q \implies x \in I$.
 
         Now for any $a < b$ we can find a $r \in \Q : a - \sqrt2 < r < b - \sqrt2$, by the denseness of $\Q$ (Theorem 4.7). 
         But then if we take $r + \sqrt2$ we get $a < r+\sqrt2 < b$ and we showed $r+\sqrt2 \in I$, so there will always exists an irrational number $a < i < b$.
 
-    \item Prove $\sup(A+B) = \sup A + \sup B $.
+    \item \textbf{Prove $\sup(A+B) = \sup A + \sup B $.}
 
         To show $\sup(A+B) = \sup A + \sup B $, we will first show $\sup A + \sup B \geq\sup(A+B)$.
 
@@ -125,6 +131,19 @@ Jesse Cai
 
         But $\sup(A + \sup B) = \sup A + \sup B \leq \sup(A+B)$. So since 
         $$\sup A + \sup B \leq \sup(A+B) \land \sup A + \sup B \geq \sup(A+B) \implies \sup A + \sup B = \sup(A+B)$$.
+
+        \textbf{Prove $\inf(A+B) = \inf A + \inf B $.}
+
+        To show $\inf(A+B) = \inf A + \inf B $, we will first show $\inf A + \inf B \leq \inf(A+B)$.
+
+        Let $x \in A+B : x =a+b  \geq \inf A  + \inf B$ since $\forall a \in A. a \geq \inf A$ and likewise $\forall b \in B. b \geq \inf B$.  So $\inf (A+B) \geq \inf A +  \inf B$.
+
+        Consider the set $A+\inf B = \{\forall a \in A: a+\inf B\}$. Clearly $A + \inf B \subset A+B $ so taking the suprema yields $\inf(A+\inf B)\geq \inf(A+B)$. 
+
+        But $\inf(A + \inf B) = \inf A + \inf B \geq \inf(A+B)$. So since 
+        $$\inf A + \inf B \leq \inf(A+B) \land \inf A + \inf B \geq \inf(A+B) \implies \inf A + \inf B = \inf(A+B)$$.
+
+
 
 
 
