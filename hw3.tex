@@ -2,7 +2,6 @@
 \addtolength{\oddsidemargin}{-.875in}
 \addtolength{\evensidemargin}{-.875in}
 \addtolength{\textwidth}{1.75in}
-
 \addtolength{\topmargin}{-.875in}
 \addtolength{\textheight}{1.75in}
 
@@ -22,12 +21,36 @@ Jesse Cai
 
 \begin{enumerate}
     \item \textbf{Let $a, b \in R$. Show if $a \leq b_1$ for every $b_1 > b$, then $a \leq b$.}
+
+        Suppose $a > b$. Then by the denseness of $\Q$ (Thm 4.7) $\exists b_1 : a > b_1> b$ but this is a contradiction, as we said $a \leq b_1$ for every $b_1 > b$. Therefore $ a \leq b$ if $a \leq b_1$ for every $b_1 > b$.
+
     \item \textbf{Prove that for any $A,B \subset \R: \sup(A\cup B) = \max \{\sup(A), \sup(B)\}$.}
 
-        Note that $\sup(A) \leq \sup(A\cup B) $ and $\sup(B) \leq \sup(A\cup B)$.
+        WLOG Suppose $\sup(A) > \sup(B)$ then $\forall b \in B: \sup(B) > b \implies \forall b \in B: \sup(A) > \sup(B) > b$.
+        
+        So $\forall x \in A\cup B: \sup(A) > x \implies \sup(A)$ is an upper bound on $A \cup B$. Now we will prove that $\sup(A)$ is the least upper bound. 
 
-        WLOG Suppose $\sup(A) > \sup(B)$ and $\sup(A\cup B) \neq \sup(A)$ then 
+        Suppose $\exists x : x \text{ is a upper bound} \land x < \sup A$. But then $x < \sup(A) \land \forall a \in A: x > a$. But this is a contradiction, as by definition $\sup(A)$ is the least upper bound. So therefore $\sup(A) = \sup (A\cup B)$.
 
+        Note when $\sup(A) = \sup(B)$ either choice satisfies max.
+
+    \item \textbf{Determine $\lim s_n$ where $s_n = \sqrt{n^2 +1} -n $ }
+
+    \item \textbf{Determine $\lim s_n$ where $s_n = \sqrt{n^2 +1} -n $ }
+
+    \item \textbf{Find $\lim \frac{4n+3}{7n-5}$ }
+
+        Claim: $\lim \frac{4n+3}{7n-5} = \frac{4}{7}$
+
+        Fix $k \in \N$. Then take $n_0 = \max (5, \frac{1}{k})$
+
+        If $n \geq n_0$ then \frac{} -  \geq
+
+        $ \lvert \frac{4n+3}{7n-5}- \frac{4}{7} \rvert = \frac{1}{k+1}$
+
+    \item \textbf{Determine if $\lim_{n \to \inf}$ }
+    \item \textbf{Determine if $\lim_{n \to \inf}$ }
+    \item \textbf{Determine if $\lim_{n \to \inf}$ }
     \item \textbf{Determine if $\lim_{n \to \inf}$ }
 
 \end{enumerate}
