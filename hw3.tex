@@ -34,23 +34,36 @@ Jesse Cai
 
         Note when $\sup(A) = \sup(B)$ either choice satisfies max.
 
-    \item \textbf{Determine $\lim s_n$ where $s_n = \sqrt{n^2 +1} -n $ }
+    \item \textbf{Prove every nonempty set $F \subset P(E)$ admits $\sup F $ and $\inf F$ and that $\sup(F) = \cap F$}
+        Define $A \geq B$ if $A \subset B$ and $A \leq B$ if $ B \subset A$.
+
+        Let $F \subset P(E)$. Then take $\forall f \in F:  \cap F \subset f \implies \cap F > f$ so $\cap F$ is an uppper bound. Suppose $\exists x \in P(E): (\forall f \in F: x > f) \lamd x < \cap F$.
+        But then $\forall f \in F 
 
     \item \textbf{Determine $\lim s_n$ where $s_n = \sqrt{n^2 +1} -n $ }
+
+        Claim: $\lim s_n  = 0$
+
+        Proof: Fix $k \in \N$. Then take $n_0 = \sqrt{k^2+2k}$. Then $ \lvert \sqrt{n^2 +1 } - n  \rvert < \lvert \sqrt{n^2 +1 } - n  \rvert $
+
 
     \item \textbf{Find $\lim \frac{4n+3}{7n-5}$ }
 
         Claim: $\lim \frac{4n+3}{7n-5} = \frac{4}{7}$
 
-        Fix $k \in \N$. Then take $n_0 = \max (5, \frac{1}{k})$
+        Proof: Fix $k \in \N$. Then take $n_0 = \max (5, {1+k})$
 
-        If $n \geq n_0$ then \frac{} -  \geq
+        If $n \geq n_0$ then $ \lvert \frac{4n+3}{7n-5}- \frac{4}{7} \rvert = \frac{7(4n+3) - 4(7n-5)}{7(7n-5)} = \frac{41}{7(7n-5)}$
+        but since $n \geq 5 \implies \frac{41}{7(7n-5)} \leq \frac{1}{1+k}$. So this is indeed a limit.
 
-        $ \lvert \frac{4n+3}{7n-5}- \frac{4}{7} \rvert = \frac{1}{k+1}$
 
     \item \textbf{Determine if $\lim_{n \to \inf}$ }
     \item \textbf{Determine if $\lim_{n \to \inf}$ }
-    \item \textbf{Determine if $\lim_{n \to \inf}$ }
+    \item \textbf{Find $\lim \sqrt[3]{n^3+n^2+1} - \sqrt[3]{n^3+1}$}
+
+        Claim: This limit is 0
+
+        Proof: Fix $k$. Then take $n_0 = $
     \item \textbf{Determine if $\lim_{n \to \inf}$ }
 
 \end{enumerate}
