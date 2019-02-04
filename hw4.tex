@@ -11,6 +11,9 @@
 \DeclareMathOperator*{\Q}{\mathbb{Q}}
 \DeclareMathOperator*{\N}{\mathbb{N}}
 \DeclareMathOperator*{\I}{\mathbb{I}}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \begin{document}
 
 MATH 131 Homework 4
@@ -22,9 +25,33 @@ Jesse Cai
 \begin{enumerate}
     \item \textbf{Prove $\exists N : n > N \implies s_n > a$}
 
-    Let $\lim s_n = L, L > a$. 
+    Let $\lim s_n = L$. Then $\forall k \in \N \exists N \in \N \forall n \in \N : n > N \implies \lvert s_n - L \rvert < \frac{1}{k+1} $.
 
-    Then $\forall k \in \N \exists N \in \N \forall n \in \N : n > N \implies \lvert s_n - L \rvert < \frac{1}{k} \implies \lvert s_n - a \rvert < \frac{1}{k}$.
+    Take $k = \ceil{a}$. Then $\exists N \in \N \forall n \in \N: n > N \implies \lvert s_n - L \rvert < \frac{1}{a+1}   \implies   - \frac{1}{a+1} < s_n - L < \frac{1}{a+1} $.
+
+    Since $L > a \implies - \frac{1}{a+1} < s_n - a < \frac{1}{a+1} $.
+
+    Taking only the LHS and adding $a$, we get $ a - \frac{1}{a+1} < s_n$. But $a - \frac{1}{a+1} > a \implies a < s_n \implies \exists N \in \N \forall n \in \N: n > N \implies s_n > a$.
+
+    \item \textbf{TODO}
+    \item \textbf{Show $\lim \frac{a^n}{n!} = 0 \forall a \in \R$}
+
+        Fix $a \in \R$. Consider $\lim \abs{\frac{s_{n+1}}{s_n}}$.
+        $$ \frac{s_{n+1}}{s_n} = \frac{a^{n+1}}{(n+1)!}\left(\frac{n!}{a^n} \right )= \frac{a}{n}$$
+
+        Then $\lim \abs{\frac{s_{n+1}}{s_n}} = \lim \abs{\frac{a}{n}} = \abs{a} \lim \frac{1}{n}$ = \abs{a}0 = 0 < 1$.
+
+        Then by 9.12a we get $\lim \frac{a^n}{n!} = 0$. Since we did not specify a particular $a$, this holds $\forall a \in \R$.
+
+
+
+
+
+    \item \textbf{}
+    \item \textbf{}
+
+
+    
 
 \end{enumerate}
 \end{document}
