@@ -25,33 +25,127 @@ Jesse Cai
 \begin{enumerate}
     \item \textbf{Prove $\exists N : n > N \implies s_n > a$}
 
-    Let $\lim s_n = L$. Then $\forall k \in \N \exists N \in \N \forall n \in \N : n > N \implies \lvert s_n - L \rvert < \frac{1}{k+1} $.
+        Let $\lim s_n = L$. Fix $\epsilon = L-a$  ($L > a \implies L-a > 0$) then by limit definition $\exists N \in \N \forall n \in \N : n > N \implies \lvert s_n - L \rvert < \epsilon$.
 
-    Take $k = \ceil{a}$. Then $\exists N \in \N \forall n \in \N: n > N \implies \lvert s_n - L \rvert < \frac{1}{a+1}   \implies   - \frac{1}{a+1} < s_n - L < \frac{1}{a+1} $.
+        So we know that $$\exists N \in \N \forall n \in \N: n > N \implies \lvert s_n - L \rvert <  (L-a) \implies   - (L-a) < s_n - L < L-a \underset{\text{ add $L$ to both sides }}{\implies} a < s_n$$ 
 
-    Since $L > a \implies - \frac{1}{a+1} < s_n - a < \frac{1}{a+1} $.
 
-    Taking only the LHS and adding $a$, we get $ a - \frac{1}{a+1} < s_n$. But $a - \frac{1}{a+1} > a \implies a < s_n \implies \exists N \in \N \forall n \in \N: n > N \implies s_n > a$.
+\item \textbf{Show $\lim_{n \to \infty} \frac{a^n}{n^p} = \begin{cases}
+            0 \text{ if } \abs{a} \leq 1 \\
+            +\infty \text{ if }  a > 1 \\
+            DNE \text{ if }  a < -1 \\
+    \end{cases}$}
 
-    \item \textbf{TODO}
-    \item \textbf{Show $\lim \frac{a^n}{n!} = 0 \forall a \in \R$}
+        Consider $\lim \abs{\frac{s_{n+1}}{s_n}}$.
+
+        $$ \frac{s_{n+1}}{s_n} = \frac{a^{n+1}}{(n+1)^p}\left(\frac{n^p}{a^n} \right )= \frac{an^p}{(n+1)^p}$$
+       
+        Then $\lim \abs{\frac{s_{n+1}}{s_n}} = \lim \abs{\frac{an^p}{(n+1)^p}} = \abs{a} \lim \frac{n^p}{(n+1)^p} = \abs{a}$
+
+        Then if $\abs{a} \leq 1 $ by 9.12a we get $\lim \frac{a^n}{n^p} = 0$ and likewise if $a > 1 $ by 9.12b we get $\lim \frac{a^n}{n^p} = \infty$
+
+        In the case of $a < -1$ we see that $\forall \text{ even } n \in \N: \lim \frac{a^n}{n^p} = \infty$ but  $\forall \text{ odd } n \in \N: \lim \frac{a^n}{n^p} = -\infty$. But if a limit exists it must be unique, so therefore it does not exist.
+
+    \item \textbf{Show $\lim \frac{a^n}{n!} = 0 \forall a \in \R$.}
 
         Fix $a \in \R$. Consider $\lim \abs{\frac{s_{n+1}}{s_n}}$.
         $$ \frac{s_{n+1}}{s_n} = \frac{a^{n+1}}{(n+1)!}\left(\frac{n!}{a^n} \right )= \frac{a}{n}$$
 
-        Then $\lim \abs{\frac{s_{n+1}}{s_n}} = \lim \abs{\frac{a}{n}} = \abs{a} \lim \frac{1}{n}$ = \abs{a}0 = 0 < 1$.
+        Then $\lim \abs{\frac{s_{n+1}}{s_n}} = \lim \abs{\frac{a}{n}} = \abs{a} \lim \frac{1}{n} = \abs{a}0 = 0 < 1$.
 
         Then by 9.12a we get $\lim \frac{a^n}{n!} = 0$. Since we did not specify a particular $a$, this holds $\forall a \in \R$.
 
+    \item \textbf{Prove $(\sigma_n)$ is an increasing sequence.}
+
+        We will prove this using induction. Let $P(n) = \sigma_{n+2}  > \sigma_{n+1}$.
+
+        Base Case: Consider $P(0)$. Note that $s_2 > s_1 \implies s_2 + s_1 > s_1 + s_1 \implies \frac{1}{2} (s_1+s_2) > s_1$. So $P(0)$ is TRUE by inspection.
+
+        Inductive Step: Assume $P(n)$ holds, then consider $P(n+1)$. 
+
+        $$P(n) =  \frac{1}{n+2} \sum_{i=1}^{n+2} s_i > \frac{1}{n+1} \sum_{i=1}^{n+1} s_i \implies (n+1) \sum_{i=1}^{n+2} s_i > (n+2) \sum_{i=1}^{n+1} s_i \implies (n+1) s_{n+2} > \sum_{i=1}^{n+1} s_i $$
+
+        Since $s_{n+2}$ is positive, we can add it to both sides to get
+        $ (n+2) s_{n+2} > \sum_{i=1}^{n+2} s_i $
+
+        But $s_n$ increasing so $ (n+2) s_{n+3} > (n+2) s_{n+2} > \sum_{i=1}^{n+2} s_i $
+
+        Then adding $ (n+2) \sum_{i=1}^{n+2} s_i $ to both sides yields
+
+        $$ (n+2) \sum_{i=1}^{n+3} s_i > (n+3) \sum_{i=1}^{n+2} s_i \implies P(n+1)$$
+
+        So $P(n) \implies P(n+1)$, so $P(n)$ holds $\forall n \in \N$.
+
+    \item \begin{enumerate}
+        \item \textbf{Find $s_2, s_3, s_4$}
+
+            $s_2 = \frac{1}{3}(1+1) = \frac{2}{3}$, 
+            $s_3 = \frac{1}{3}(\frac{2}{3}+1) = \frac{5}{9}$, 
+            $s_4 = \frac{1}{3}(\frac{5}{9}+1) = \frac{14}{27}$
+
+        \item \textbf{Show $s_n > \frac{1}{2}$}
+
+            Let $P(n) = s_{n+1} > \frac{1}{2}$. 
+
+            Base Case: Consider $P(0) = s_{1} > \frac{1}{2} = 1 > \frac{1}{2}$. This is TRUE by observation.
+
+            Inductive Step: Assume $P(n)$ then
+
+            $$s_{n+1} > \frac{1}{2} \implies s_{n+1} + 1 > \frac{1}{2} +1 \implies \frac{1}{3}(s_{n+1}+1) > \left(\frac{1}{3}\right)\frac{3}{2}  = \frac{1}{2}$$
+
+            So $P(n) \implies P(n+1)$, so $P(n)$ holds $\forall n \in \N$.
+        
+        \item \textbf{Show $( s_n)$ is a decreasing sequence.}
+
+            We will prove this by contradiction. Assume $\exists n \in \N: s_n \leq s_{n+1} \implies s_n \geq \frac{1}{3}(s_n + 1)$
+
+            $$s_n \leq \frac{1}{3} (s_n + 1) \implies 3s_n \geq s_n+1 \implies s_n \leq \frac{1}{2}$$
+
+            But this is a contradiction of (b), so therefore $\forall n \in \N : s_n > s_{n+1} \implies (s_n)$ is decreasing.
+
+        \item \textbf{Show $\lim s_n$ exists and find it.}
+
+            Note that $(s_n)$ is bounded from below by $\frac{1}{2}$ and decreasing $\implies$ limit exists.
+
+            To find the limit, note by limit theorems in the book
+            $$\lim s_n = \lim s_{n+1} = \lim \frac{1}{3}(s_n + 1) = \frac{1}{3} \lim (s_n +1)  = \frac{1}{3} \lim s_n +1 $$
+
+            Let $L = \lim s_n$, solving for $L$ we get $L = \frac{1}{3}(L+1) \implies L = \frac{1}{2}$.
 
 
+    \end{enumerate}
+    
+    \item \begin{enumerate}
+        \item \textbf{Show $\liminf s_n \leq \liminf \sigma_n \leq \limsup \sigma_n \leq \limsup s_n$.}
 
+        We know that $\liminf \sigma_n \leq \limsup \sigma_n$, so we just need to show that $\liminf s_n \leq \liminf \sigma_n \land \limsup \sigma_n \leq \limsup s_n$. Assuming $M > N$:
 
-    \item \textbf{}
-    \item \textbf{}
+        $$\sigma_M = \frac{1}{M}(s_1 + \ldots + s_m) = \frac{s_1 + \ldots + s_N}{M} + \frac{s_{N+1} + \ldots + s_M}{M} \leq \frac{s_1 + \ldots + s_N}{M} + \frac{M-N}{M} \sup \{ s_n : n > N\}$$
+
+        But this holds $\forall M$ so this is an upper bound so since $sup$ is the least upper bound:
+
+        $$\sup \{ \sigma_n : n > M\} \leq \frac{s_1 + \ldots + s_N}{M} + \frac{M-N}{M} \sup \{ s_n : n > N\}$$
+
+        Taking the limit wrt $M$ on both sides we get 
+        $\limsup \sigma_n \leq \sup \{ s_n : n > N\}$ and then taking the limit wrt $n$  yields $ \limsup \sigma_n \leq \limsup s_n$.
+
+        But $ \limsup \sigma_n \leq \limsup s_n \implies  \limsup - \sigma_n \geq \limsup  - s_n \implies  \liminf \sigma_n \geq \liminf s_n$. So now we have our full inequality.
+
+        \item \textbf{ Show that $\lim s_n = \lim \sigma_n$ if the limit exists}
+
+        If $\lim s_n$ exists then $\limsup s_n = \liminf s_n = \lim s_n$. But then we can see from 
+        
+        $$\lim s_n \leq \liminf \sigma_n \leq \limsup \sigma_n \leq \lim s_n$$
+
+        that $\liminf \sigma_n = \limsup \sigma_n = \lim s_n \implies \lim \sigma_n = \lim s_n$
+
+        \item \textbf{ Give an example where $\lim \sigma_n$ exists but $\lim s_n$ doesn't.}
+        
+            Let $s_n = \{1, 2, 1, 2, 1, 2, 1, 2 \ldots \}$ $s_n$ doesn't converge, so the limit does not exist, but $\lim \sigma_n = \frac{3}{2}$.
 
 
     
+    \end{enumerate}
 
 \end{enumerate}
 \end{document}
