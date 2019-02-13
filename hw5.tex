@@ -23,15 +23,112 @@ Jesse Cai
 304634445
 
 \begin{enumerate}
+
+
     \item \textbf{Let $t_1$ = 1 and $t_{n+1} = [1 - \frac{1}{(n+1)^2}] (t_n)$}
 
+        \begin{enumerate}
+            \item $t_n$ is bounded from below and decreasing so the limit must exist
 
-        Let $P(n)  = t_n = \frac{n+1}{2n}$
+            Proof via induction: Let $P(n)  = (t_n \leq 1) \land (t_{n+1} < t_n)$
 
-        Base Case: Consider $P(0)$. 
+            Base Case: Consider $P(1) = (t_1 < 1) \land (t_2 < t_1)$. Clearly $1 \leq 1$, and $t_2 = {} \leq 1 = t_n$  So $P(1)$ is TRUE. 
 
+            Inductive Step: Assume $P(n)$, so $(t_n \leq 1) \land (t_{n+1} < t_n)$
 
+            Since $n \in \N \implies n \geq 0 \implies {(n+1)^2} > 1 \implies \frac{1}{(n+1)^2} < 1 \implies 1 - \frac {1}{(n+1)^2} < 1$
 
+            Then since $[1 - \frac{1}{(n+1)^2}] < 1 $ and $ t_n \leq 1 \implies t_{n+1} \leq 1$.
+
+            But also $[1 - \frac{1}{(n+1)^2}] < 1 \implies t_n [1 - \frac{1}{(n+1)^2}] = t_{n+1} < 1(t_n) = t_n $ so $P(n) \implies P(n+1)$.
+
+            \item I think $\lim t_n$ is $\frac{1}{2}$
+
+            \item Let $P(n)  = t_n = \frac{n+1}{2n}$
+
+            Base Case: Consider $P(1)$, then $t_1 = 1 = \frac{1+1}{2(1)}$ is TRUE by inspection.
+
+            Inductive Step: Assume $P(n)$, so $t_n = \frac{n+1}{2n}$. Multiplying by $[1 - \frac{1}{(n+1)^2}]$ yields
+
+            $$ \left [1 - \frac{1}{(n+1)^2} \right] t_n = t_{n+1} = \frac{n+1}{2n}\left [1 - \frac{1}{(n+1)^2}\right ] = \frac{(n+1)^3}{2n(n+1)^2} - \frac{n+1}{2n(n+1)^2} = \frac{(n+1)(n)(n+2)}{2n(n+1)^2} = \frac{n+2}{2(n+1)} $$
+
+            so $P(n) \implies P(n+1)$.
+
+            \item After proving this, I think $\lim t_n$ is $\frac{1}{2}$
+        \end{enumerate}
+    
+    \item \textbf{Prove that $\lim \frac{a_{n+1}}{a_n}$ exists and identify it's value}
+
+        $$a_0 = 1 \land a_1 =a \land (\forall n \in \N: a_{n+2} = 2a_n + a_{n+1})$$
+
+        Let $x = \frac{a_{n+1}}{a_n}$ then $\forall n \in \N: \frac{a_{n+2}}{a_n+1} = \frac{2a_n}{a_{n+1}} + 1$
+
+        Taking the limit of both sides yields 
+        
+        $$\lim \frac{a_{n+2}}{a_{n+1}} =  \lim \left( 2\frac{a_n}{a_{n+1}} + 1\right) = 2 \lim \frac{a_n}{a_{n+1}} + 1 $$
+
+        So $L  = \frac{2}{L} +1$ and solving for $L$ we get $L = 2, -1$, but $L$ cannot be negative because this sequence is strictly increasing and starts greater than 0, so $L = \lim \frac{a_{n+1}}{a_n} = 2$.
+
+    \item \textbf{Show every subsequence of a subsequence is a subsequence of the original sequence.}
+
+        Let $s_n$ be a sequence and $t_k$ be a subsequence, and $u_j$ be a subsequence of $t_k$. Then by definition of subsequence, $t = s(\sigma(k))$ and $u = t(\gamma(j))$. We can then define a new function, $\sigma(\gamma(j))$, which is a mapping from $\N$ to $s$. But by definition, this means that $u_j$ is a subsequence of $s_n$, as $u = s(\sigma(\gamma(j)))$.
+
+        So a subsequence of a subsequence is a subsequence of the original sequence.
+
+    \item \textbf{Find the set $S$ of subsequential limits.}
+
+        Note that each column is a monotone sequence, which is just $\frac{1}{i}$ repeated infinitely, so for each column, we can define a subsequence whose limit is $\frac{1}{n}$. 
+
+        But also along each row, we can define a subsequence $(s_n) = \frac{1}{n}$ which converges to 0.
+
+        So $S$ contains $\{ \forall n \in \N : k\frac{1}{n}\} \cup \{0 \}$
+
+        \textbf{Determine $\limsup s_n$ and $\liminf s_n$.}
+
+        We know from Theorem 8 that $\sup S = \limsup s_n$ and $\inf S = \liminf s_n$. So $\limsup s_n = 1 $ and $\liminf s_n = 0 $ 
+
+    \item \textbf{Let $r_n$ be an enumeration of $\Q$. Show there is a subsequence whose limit is $\infty$.}
+
+        Take $r_{n}$ as a sequence of $\Q$. Then $\forall a \in \R \exists (r_{n_k}) \text{ that converges to } a$ based on the density of $\Q$ on $\R$.
+
+        Then the subsequential limits of $(r_n) = \R \cup \{ -\infty, \infty\} \implies \limsup r_n = \infty$. Then by Theorem 11.7 there exists a monotonic subsequence whose limit is $\limsup r_n = \infty$.
+
+    \item \textbf{Show $\limsup (s_n + t_n) \leq \limsup s_n + \limsup t_n$ for bounded sequences $(s_n)$ and $(t_n)$ }
+
+        Let $\sup (s_n + t_n), \sup(s_n), \sup(t_n)$ be $z, x, y$ respectively. Since all the sequences are bounded, $x, y, z \in \R$ and by definition of $\sup$ $\forall n \in \N s_n < x, t_n < y$. 
+
+        But this implies that $\forall n \in \N: s_n + t_n \leq x+y$ so $x+y$ is an upper bound, but this means that $z \leq x+y$, since it is the least upper bound. 
+
+        So $\sup (s_n + t_n) \leq \sup s_n + \sup t_n$ and taking the limit on both sides yields
+
+        $$\limsup (s_n + t_n) \leq \limsup s_n + \limsup t_n$$
+
+    \item \textbf{Show $\limsup (s_n + t_n) \leq (\limsup s_n)(\limsup t_n)$ for bounded sequences of nonegative numbers $(s_n)$ and $(t_n)$ }
+
+        Let $\sup (s_n t_n), \sup(s_n), \sup(t_n)$ be $z, x, y$ respectively. Since all the sequences are bounded, $x, y, z \in \R$ and by definition of $\sup$ $\forall n \in \N s_n < x, t_n < y$. 
+
+        But also since $(s_n), (t_n)$ are nonnegative $\implies \sup (s_n) > 0, \sup (t_n) > 0$.
+
+        But this means that that $\forall n \in \N: s_n t_n \leq (x)(y)$ so $(x)(y)$ is an upper bound, but this means that $z \leq x+y$, since it is the least upper bound. 
+
+        So $\sup (s_n t_n) \leq (\sup s_n)  (\sup t_n)$ and taking the limit on both sides yields
+
+        $$\limsup (s_n t_n) \leq (\limsup s_n)  (\limsup t_n)$$
+
+    \item \textbf{Prove $(s_n)$ is bounded if and only if $\limsup\abs{s_n} < +\infty$ }
+
+        Proof by contradiction, suppose $\limsup\abs{s_n} = +\infty$ and $(s_n)$ is bounded. Then we know that $\limsup \abs{s_n} = +\infty = \lim \abs{s_n}$ 
+
+        A sequence $(s_n)$ is said to be bounded if $\exists M \in \R \text{ such that } \forall n \in \N: \abs{s_n}  \leq M$.  so  $(\abs{s_n})$ is bounded $\implies$ $\exists M \in \R \text{ such that } \forall n \in \N: \abs{\abs{s_n}}  \leq M$ but $\abs{\abs{s_n}} = \abs{s_n}$. But if $\abs{s_n}$ is  bounded by $M$ then so must $\lim \abs{s_n}$, but this is a contradiction, because by definition $\forall x \in \R : +\infty > x$. So therefore 
+        $(s_n)$ is bounded if $\limsup\abs{s_n} < +\infty$.
+
+    \item \textbf{ Calculate $\lim (n!)^\frac{1}{n}$}
+
+        Let $(s_n) = n!$, then $$\lim \left \vert \frac{s_{n+1}}{s_n}  \right \vert = \lim \frac{(n+1)!}{n!} = \lim n+1 = \infty$$. 
+
+        The by Corollary 12.3 if $\lim \left \vert \frac{s_{n+1}}{s_n} \right \vert = L \implies \lim \abs{s_n}^{\frac{1}{n}} = L$
+
+        So $\lim {n!}^\frac{1}{n} = \infty$.
 
 \end{enumerate}
 \end{document}
