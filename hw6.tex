@@ -23,11 +23,97 @@ Jesse Cai
 304634445
 
 \begin{enumerate}
-    \item \bf Prove $\forall x \in \R: \x \in A  = \left(\forall k \in \N: a_k := \{n \in \N  : \abs{a_n - x} < \frac{1}{k+1}\} \right)$
+    \item \textbf{Prove $\forall x \in \R: x \in A  = \left(\forall k \in \N: a_k := \{n \in \N  : \abs{a_n - x} < \frac{1}{k+1}\} \right)$}
+
+    \item \textbf{Prove $b, c \in A$.}
+
+        We will prove this via contradiction. We know from Theorem 11.8 in the book that $\sup A = \limsup a_n = b $ and likewise $\inf A = \liminf a_n = c $
+
+    \item \textbf{Prove $( s_n )$ is Cauchy and hence convergent.}
+
+        $ (s_n)$ is Cauchy if $\forall \epsilon > 0, \exists N, \forall m, n > N: \abs{s_m - s_n} < \epsilon$
+
+        WLOG assume $m>n$.
+
+        Then $\abs{s_m - s_n } = \abs{s_m - s_{m-1} + s_{m-1} - s_{m-2} + \cdots + s_{n+1} - s_n}$. So by triangle inequality 
+        $\abs{s_m - s_n } \leq \abs{s_m - s_{m-1}} +\abs{s_{m-1} - s_{m-2}} + \cdots + \abs{s_{n+1} - s_n}$
+
+        But we know $\forall n \in \N: \abs{s_{n+1} - s_n} < 2^{-n}$ so 
+
+        $\abs{s_m - s_n } \leq 2^{-m+1} + 2^{-m+2} + \cdots + 2^{-n} = 2^{-m+!}$
+
+        So for any $\epsilon$ choose $N = $ so $(s_n)$ is Cauchy and hence convergent.
+
+        \textbf{Is this true if $\abs{s_{n+1} - s_n} < \frac{1}{n}$ }
+
+        No, take $(s_n) = \sum_{i=1}{n} \frac{1}{i}$. Then $\abs{s_{n+1} - s_n} = \frac{1}{n+1} < \frac{1}{n}$ but $(s_n)$ is not Cauchy.
+
+        Fix $\epsilon > 0 $. For any $N$ we pick, $\exists m,n > N$,  such that /abs
     
+    \item \textbf{Consider the following sequences $$a_n = (-1)^n, b_n = \frac{1}{n}, c_n = n^2, d_n = \frac{6n+4}{7n-3}$$}
 
-    \item
+        Monotone subsequences: $(a_{2n}), (b_n), (c_n ), (d_n)$.
 
+        Set of subsequential limits: $\{-1, 1\}, \{0\}, \{\infty \}, \{\frac{6}{7}\}$
+
+        $\limsup$ and $\liminf$: $1,-1; 0, 0; \infty, \infty; \frac{6}{7}, \frac{6}{7}$
+
+        $a_n$ does not converge, while $c_n$ diverges to $\infty$. $b_n, d_n$ both converge.
+
+        $a_n, b_n, d_n$ are all bounded, while $c_n$ is unbounded.
+
+    \item \textbf{Consider the following sequences $$w_n = (-2)^n, x_n = 5^{(-1)^n}, y_n = 1 + (-1)^n, z_n = n \cos \left(\frac{n\pi}{4} \right) $$}
+
+        Monotone subsequences: $(w_{2n}), (x_{2n}), (y_{2n} ), (z_{4n-2})$.
+
+        Set of subsequential limits: $\{-\infty, \infty\}, \{\frac{1}{5}, 5\}, \{0, 2\}, \{ -\infty, 0, \infty\}$
+
+        $\limsup$ and $\liminf$: $-\infty, \infty; \frac{1}{5}, 5; 0,2 ; -\infty, \infty$
+
+        None of these 4 sequences converge
+
+        $w_n, z_n$ are bounded, while $x_n, y_n$ are unbounded.
+
+    \item \textbf{Prove $\liminf s_n = -\limsup (-s_n)$}
+
+        We know from Theorem 10.6 $\liminf s_n = \lim_{N \to \infty}  \inf \{ s_n: n > N\}$
+
+        But from Exercise 5.6 we know that $\inf \{ s_n: n > N\} = - \sup \{-s_n : n > N\}$ so long as $S$ is a nonempty subseto of $\R$, but this is exactly what $\{ s_n: n > N\}$ is.
+
+        So $\liminf s_n = \lim_{N \to \infty} - \sup \{-s_n : n > N\} = - \limsup (-s_n)$.
+        
+    \item \textbf{Determine which of the following series converge.}
+
+        $\sum \frac{n-1}{n^2}$ Note that $n> 10 \implies frac{n-1}{n^2} > \frac{1}{2n}$, a divergent harmonic series, so this sum diverges by the comparison test.
+
+        $\sum (-1)^n$ Note that $a_n = (-1)^n$ so $\lim a_n \neq 0 \implies$ divergence.
+
+        $\sum \frac{3n}{n^3}  = 3 \sum \frac{1}{n^2}$ but this is a convergent harmonic series, so this sequence also converges. 
+
+        $\sum {\frac{n^3}{3^n}}$. By the Ratio test, $\lim \abs{\frac{(n+1)^3}{3n^3}} = \frac{1}{3} < 1$. so this series converges.
+
+        $\sum \frac{n^2}{n!}$. By the Ratio test, $\lim \abs{\frac{1}{n} + \frac{1}{n^2}} = 0 < 1$ so this series converges.
+    
+        $\sum \frac{1}{n^n}$. By the Root test, $\lim \abs{a_n}^{\frac{1}{n}} = \lim \abs{\frac{1}{n^n}}^{\frac{1}{n}} = \lim \frac{1}{n} = 0 < 1$ so this series converges.
+
+        $\sum \frac{n}{2^n}$. By the Ratio test, $\lim \abs{\frac{n+1}{2n}} = \frac{1}{2} < 1$ so this series converges.
+
+    \item \textbf{Prove that if $\sum \abs{a_n}$ converges and $(b_n)$ is bounded then $\sum a_n b_n$ converges.}
+
+        We just need to show that $\sum a_n b_n$ is Cauchy to show that it converges.
+
+       
+    \item \textbf{Predicate Calculus}
+
+        Let $m\vert n = \exists k \in \N: (k)(n) = m$
+
+        \begin{enumerate}
+            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
+            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
+            \item $\forall n \in \N  : (n \vert 6 ) \land (n \vert 5) \implies (n \vert 20)$
+            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
+            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
+        \end{enumerate}
 
 \end{enumerate}
 \end{document}
