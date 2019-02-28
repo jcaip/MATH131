@@ -23,11 +23,30 @@ Jesse Cai
 304634445
 
 \begin{enumerate}
-    \item \textbf{Prove $\forall x \in \R: x \in A  = \left(\forall k \in \N: a_k := \{n \in \N  : \abs{a_n - x} < \frac{1}{k+1}\} \right)$}
+    \item \textbf{Prove $\forall x \in \R: x \in A  = \left(\forall k \in \N: A_k := \{n \in \N  : \abs{a_n - x} < \frac{1}{k+1}\} \text{ is unbounded } \right)$}
+
+        Fix $x \in A$. Then since $x$ is a subsequential limit, $\forall k \exists N \forall n : n > N \implies \abs{a_{n} - x} < \frac{1}{k+1}$. 
+
+
+        Assume $A_k$ was bounded so there was a bound $M$.
+
+        Then fix $k = M$ so that $\exists N \forall n : n > N \implies \abs{a_{n} - x} < \frac{1}{M+1}$. 
+
+        But then we get $\forall n > N: \abs{a_{n} -x} > M+1 > M$, which is a contradiction, since we said the bound was $M$.
 
     \item \textbf{Prove $b, c \in A$.}
 
-        We will prove this via contradiction. We know from Theorem 11.8 in the book that $\sup A = \limsup a_n = b $ and likewise $\inf A = \liminf a_n = c $
+        We know from Theorem 11.7 in the book that There exists a monotonic subsequence whose limit is $\limsup s_n$ and $\liminf s_n$ respetively, so $b, c \in A$.
+
+        \textbf{Assuming that $\lim (a_{n+1} - a_n) = 0$ prove that $A = [b,c]$.}
+
+        From above, we know that $b,c$ are the min/max of the interval, and are included. 
+
+        Take $x,y$ such that $b < x < y < c$. Then $A = \{n: a_n < x\}$ and $B = \{n: a_n > y\}$ are infinite. 
+
+        Assume that $\{n : x<n<y\}$ was finite. Then we can find a sequence $n_k \in A, n_{k+1} \in B$, but this is a contradiction since time implies that $a_{n_{k+1}} - a_{n_k} > 0$, so this must be infinite.
+
+        But since all three intervals are infinite $A$ is the whole closed interval.
 
     \item \textbf{Prove $( s_n )$ is Cauchy and hence convergent.}
 
@@ -48,8 +67,6 @@ Jesse Cai
 
         No, take $(s_n) = \sum_{i=1}{n} \frac{1}{i}$. Then $\abs{s_{n+1} - s_n} = \frac{1}{n+1} < \frac{1}{n}$ but $(s_n)$ is not Cauchy.
 
-        Fix $\epsilon > 0 $. For any $N$ we pick, $\exists m,n > N$,  such that /abs
-    
     \item \textbf{Consider the following sequences $$a_n = (-1)^n, b_n = \frac{1}{n}, c_n = n^2, d_n = \frac{6n+4}{7n-3}$$}
 
         Monotone subsequences: $(a_{2n}), (b_n), (c_n ), (d_n)$.
@@ -100,19 +117,48 @@ Jesse Cai
 
     \item \textbf{Prove that if $\sum \abs{a_n}$ converges and $(b_n)$ is bounded then $\sum a_n b_n$ converges.}
 
-        We just need to show that $\sum a_n b_n$ is Cauchy to show that it converges.
+        We just need to show that $\sum a_n b_n$ is Cauchy to show that it converges. 
+        
+        Fix $\epsilon$. Then for $\frac{\epsilon}{M} \exists N ,  \forall m,n : m \geq n > N \implies  \abs{\sum_{k=n}^m a_k} < \frac{\epsilon}M$ since $\sum \abs{a_n}$ is Cauchy.
+        
+        Since $(b_n)$ is bounded, $\exists M > 0: \forall n \abs{b_n} \leq M$. 
 
-       
+        So $\abs{\sum_{k=n}^m a_k b_k } \leq M \sum_{k=n}^m \abs{a_k}$. But then multiplying by $M$ on both sides of the equality yields
+
+        $\abs{\sum_{k=n}^m a_k b_k } \leq M \sum_{k=n}^m \abs{a_k} \leq M \frac{\epsilon}{M} = \epsilon$
+
+        So $\sum a_n b_n$ is Cauchy and therefore converges.
+
+    \item \textbf{Show if $\sum a_n$ and $\sum b_n$ are convergent series then $\sum \sqrt{a_n b_n}$ converges.}
+
+        Since $a_n, b_n > 0 \implies a_n b_n \leq a_nb_n + (a_nb_n + a_n^2 + b_n^2) = (a_n + b_n)^2$
+
+        This means that $\sqrt{a_n b_n} \leq a_n +b_n \implies \sum \sqrt{a_n + b_n} \leq \sum a_n + b_n$.
+
+        But $\sum a_n +b_n$ is convergent, as it is the sum of two convergent series, so by the comparison test  $\sum \sqrt{a_n b_n}$ converges as well.
+
+    \item \textbf{Prove there is a subsequence such that $\sum (a_{n_k})$ converges.}
+
+        By Theorem 11.7 we know that there exists a monotonic subsequence $(a_{n_k})$ whose limit is $\liminf a_n = 0$.
+
+        $\lim \abs{a_{n_k}} = 0 \implies \exists L_k \in \N, \forall s > L_k : \abs{a_{n_k} - 0} < \frac{1}{L_k^2}$
+
+        If we take $k_l > \max(k_{l-1}+1, L_k) \implies \abs{a_{n_{k_l}}} < \frac{1}{l^2} \land k_l > k_{l-1}$. 
+        
+        Then we can use the comparison test to show that $\sum \abs{a_{n_{k_l}}}$ converges, as it is always less than a convergenet series, the second-order harmonic sum.
+
+
     \item \textbf{Predicate Calculus}
 
         Let $m\vert n = \exists k \in \N: (k)(n) = m$
 
         \begin{enumerate}
-            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
-            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
-            \item $\forall n \in \N  : (n \vert 6 ) \land (n \vert 5) \implies (n \vert 20)$
-            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
-            \item $\forall n \in \N  : (n \vert 3 ) \land (n \vert 2) \implies (n \vert 7)$
+            \item $\forall n \in \N  : [(n \vert 3 ) \land (n \vert 2)] \implies (n \vert 7)$
+            \item $\exists n \in \N  : (n \vert 6 ) \land \lnot (n \vert 4) $
+            \item $\forall n \in \N  : [(n \vert 6 ) \land (n \vert 5)] \implies (n \vert 20)$
+            \item $\exists n \in \N  : [(n \vert 3 ) \land (n \vert 2)] \land \lnot (n \vert 7)$
+            \item $\forall n \in \N  : \not (n \vert 6 ) \lor (n \vert 4) $
+            \item $\exists n \in \N  : [(n \vert 6 ) \land (n \vert 5)] \land \lnot (n \vert 20)$
         \end{enumerate}
 
 \end{enumerate}
