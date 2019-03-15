@@ -123,9 +123,8 @@ Jesse Cai
         $$\lim_{x \to 0} \frac{x - \sin x}{ x \sin x } = \lim_{x \to 0} \frac{1 - \cos x}{\sin x +  x \cos x } = \lim_{x \to 0} \frac{\sin x}{2 \cos x - x \sin x } = 0$$ 
 
     \item \textbf{Find $\lim_{x \to 0} (1 + 2x)^{\frac{1}{x}}$.}
-        We can rewrite $(1 + 2x)^{\frac{1}{x}} = \e^{\frac{\log 1 + 2x}{x}}$ so 
         
-        $$\lim_{x \to 0} (1 + 2x)^{\frac{1}{x}} = \lim_{x \to 0} e ^{\frac{\log 1 + 2x}{x}} = e^{\lim_{x \to 0}{\frac{\log 1 + 2x}{x}}} $$
+        We can rewrite $(1 + 2x)^{\frac{1}{x}} =  e^{\frac{\log 1 + 2x}{x}}$ so $\lim_{x \to 0} (1 + 2x)^{\frac{1}{x}} = \lim_{x \to 0} e ^{\frac{\log 1 + 2x}{x}} = e^{\lim_{x \to 0}{\frac{\log 1 + 2x}{x}}} $.
 
         Then by LHopital's rule:
 
@@ -133,7 +132,14 @@ Jesse Cai
 
         \textbf{ Find $\lim_{x \to \infty}$ }
 
-    \item \textbf{Let }
+    \item \textbf{Let $f$ be differentiable on some interval $(c, \infty)$ and suppose $\lim_{x \to \infty} [f(x) + f'(x)]$. Prove $\lim_{x \to \infty} f(x) = L$ and $\lim_{x \to \infty} f'(x) = 0$.}
+
+        Note that $f(x) = \frac{f(x) e^x}{e^x}$. Then by LHopital's rule
+
+        $$\lim_{x \to \infty} f(x) = \lim_{x \to \infty} \frac{f(x) e^x}{e^x} = \lim_{x \to \infty} \frac{f(x) e^x + f'(x)e^x}{e^x} = \lim_{x \to \infty} \frac{[f(x) + f'(x)]e^x}{e^x} = L$$
+
+        But then if $\lim_{x \to \infty} f(x) = L$ by the sum rule of limits $\lim_{x \to \infty} f(x) + f'(x) = \lim f(x) + \lim f'(x)$ so $\lim f'(x) = 0$.
+
 
 \end{enumerate}
 \end{document}
