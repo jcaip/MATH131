@@ -67,15 +67,73 @@ Jesse Cai
         But then $f(x) - g(x)  < f(0) - g(0) \implies f(x) \leq g(x)$.
 
     \item \textbf{Show $\forall x \in (0, \frac{\pi}{2}) x < \tan x $}
-        Let $f(x) = x - \tan x$. Then $f'(x) = 1 - \sec^2 x = 1 - (1 + \tan^2 x) = \tan^2 x$, which is $>0$ for all $x \in (0, \frac{\pi}{2})$.
+        Let $f(x) = x - \tan x$. Then $f'(x) = 1 - \sec^2 x = 1 - (1 + \tan^2 x) = \tan^2 x$, which is $>0$ for all $x \in (0, \frac{\pi}{2})$. So $f$ is strictly increasing and note $f(0) = 0 - \tan 0 = 0$ so $\forall x \in (0, \frac{\pi}{2} : f(x) > 0  \implies x < \tan x$
 
-        Then by MVT $\foralll x \exists y \in (0, x): f'(x) = \frac{f(x) - f(0)}{x-0}$
+    \textbf{Show that $\frac{x}{\sin x}$ is strictly increasing. }
 
-    \item \textbf{Placeholder}
-    \item \textbf{Find $\lim_{x \to \infty} \frac{x - \sin x}{x}$}
-        $$\lim_{x \to \infty} \frac{x - \sin x}{x} = \lim _{x \to \infty} \frac{x}{x} - \frac{\sin x}{x} = \lim_{x \to \infty} 1 - \lim_{x \to \infty} \frac{\sin x}{x} = 1 - 0 = 1$$
-    \item \textbf{Placeholder}
-    \item \textbf{Placeholder}
+        Let $f(x) = \frac{x}{\sin x}$, then $f'(x) = \frac{\sin x - x \cos x }{\sin^2 x}$. 
+
+        But from above we know $x < \tan x \implies \sin x > x \cos x$. So $\forall x \in (0, \frac{\pi}{2}: f'(x) > 0 $, which means $f(x)$ is strictly increasing.
+
+    \textbf{Show that $\forall x \in [0, \frac{\pi}{2}]: x \leq \frac{\pi}{2} \sin x$}
+
+        Note that at the endpoints $x = \frac{\pi}{2} \sin x$ and $\frac{x}{\sin x}$ is stricty increasing as shown above.,
+
+        $$\forall x, y: 0 < x < y< \frac{\pi}{2} \implies \frac{x}{\sin x} < \frac{y}{\sin y} < \lim_{y \to \frac{\pi}{2}} \frac{y}{\sin y} = \frac{\pi}{2}$$
+
+    \item \textbf{Let $f$ be differentiable on $\R$ with $a = \sup \{ \abs{f'(x)} : x \in \R \} < 1$.Show $(s_n)$ converges}
+        
+        Note $f$ is continuous and differentiable on $\R$, so we can use the MVT on the interval $(s_{n-1}, s_n)$ to know that $\exists y \in (s_{n-1}, s_n) : f'(y) = \frac{f(s_n) - f(s_{n-1})}{s_n - s_{n-1}}$.
+
+        But then using the fact that $a < 1 $ we get 
+
+        $$\abs{\frac{f(s_n) - f(s_{n-1})}{s_n - s_{n-1}}} \leq  \implies \abs{f(s_n) - f(s_{n-1})} \leq a \abs{s_n - s_{n-1}} \implies \abs{s_{n+1} -s_n} \leq a \abs{s_n - s_{n-1}}$$
+
+        But we can apply this recursive defintion to get $\abs{s_{n+1} -s_n} \leq a^n \abs{s(1)-s(0)}$.
+
+        $(s_n)$ converges if $\forall \epsilon > 0 \exists N \forall m > n > N: \abs{s_m - s_n} < \epsilon$
+
+        Fix $s(0) \in \R, \epsilon>0$. Then we pick.
+
+    \textbf{ Prove $f(x)= x$ has a fixed point.}
+
+    From above, we know $(s_n)$ converges, so let $s = \lim s_n$. Since $(s_n)$ converges, so does $(f(s_n))$, also to $s$, as it is the same sequences, just delayed.
+
+    Then because $f$ is differentiable and continuous on $\R$ $\lim s_n = s \implies \lim f(s_n)= f(s) \implies f(s) = s$ and $f$ has a fixed point.
+
+    \item \textbf{Find $\lim_{x \to 0} \frac{x^3}{\sin x - x}$}
+
+        Since $\lim x^3 = \lim g(x) = 0$ we can apply LHopital's rule.
+
+        $\lim_{x \to 0} \frac{x^3}{\sin x - x} = \lim_{x \to 0} \frac{3x^2}{\cos x - 1} = \frac{0}{0}$
+
+        Note again $\lim x^2 = \lim \cos x -1 = 0$ so we can apply LHoptial's rule twice again.
+
+        $$\lim_{x \to 0} \frac{x^3}{\sin x - x} = \lim_{x \to 0} \frac{3x^2}{\cos x - 1} = \lim_{x \to 0} \frac{6x}{-\sin x} = \lim_{x \to 0} \frac{6}{-\cos x} = -6$$
+
+    \textbf{Find $\lim_{x \to 0} \frac{\tan x - x}{x^3}$}
+
+        Again we recursively apply LHopitals rule
+
+        $$\lim_{x \to 0} \frac{\tan x -x}{ x^3} = \lim_{x \to 0}\frac{\sec^2 -1}{3x^2} = \lim_{x \to 0} \frac{2 \tan x \sec^2 x }{6x} = \lim_{x \to 0} \frac{2 \sec^2 x + 6 \tan^2 x \sec^2 x}{6} = \frac{1}{3}$$
+
+    \textbf{Find $\lim_{x \to 0} \frac{1}{\sin x } - \frac{1}{x}$}
+
+        We can rewrite this as $\lim_{x \to 0} \frac{x - \sin x}{ x \sin x }$, then apply LHopital's rule.
+        $$\lim_{x \to 0} \frac{x - \sin x}{ x \sin x } = \lim_{x \to 0} \frac{1 - \cos x}{\sin x +  x \cos x } = \lim_{x \to 0} \frac{\sin x}{2 \cos x - x \sin x } = 0$$ 
+
+    \item \textbf{Find $\lim_{x \to 0} (1 + 2x)^{\frac{1}{x}}$.}
+        We can rewrite $(1 + 2x)^{\frac{1}{x}} = \e^{\frac{\log 1 + 2x}{x}}$ so 
+        
+        $$\lim_{x \to 0} (1 + 2x)^{\frac{1}{x}} = \lim_{x \to 0} e ^{\frac{\log 1 + 2x}{x}} = e^{\lim_{x \to 0}{\frac{\log 1 + 2x}{x}}} $$
+
+        Then by LHopital's rule:
+
+        $$\lim_{x \to 0}{\frac{\log 1 + 2x}{x}} =  \lim_{x \to 0}{\frac{2}{1+2x}} = 2 \implies \lim_{x \to 0} (1 + 2x)^{\frac{1}{x}} = e^2 $$
+
+        \textbf{ Find $\lim_{x \to \infty}$ }
+
+    \item \textbf{Let }
 
 \end{enumerate}
 \end{document}
