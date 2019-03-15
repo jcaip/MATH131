@@ -44,7 +44,9 @@ Jesse Cai
     
     \textbf{ Prove $f$ is not continuous $\forall x \neq 0$}
 
-        Pick $a = \sqrt 20$.
+        Pick $a \neq 0$. 
+
+        WLOG If $a$ is irrational then there exists a sequence of rational numbers that converges to $a$. but then $f(a_n) = a^2 \implies \lim f(a_n) = a^2 \neq 0$. But $f(x) = 0 $ by definition so $f$ is discontinuous at $a$.
 
     \textbf{ Prove $f$ is differentiable at $x = 0$.}
 
@@ -94,12 +96,11 @@ Jesse Cai
         $(s_n)$ converges if $\forall \epsilon > 0 \exists N \forall m > n > N: \abs{s_m - s_n} < \epsilon$
 
         Fix $s(0) \in \R, \epsilon>0$. Then we pick.
-
     \textbf{ Prove $f(x)= x$ has a fixed point.}
 
-    From above, we know $(s_n)$ converges, so let $s = \lim s_n$. Since $(s_n)$ converges, so does $(f(s_n))$, also to $s$, as it is the same sequences, just delayed.
+        From above, we know $(s_n)$ converges, so let $s = \lim s_n$. Since $(s_n)$ converges, so does $(f(s_n))$, also to $s$, as it is the same sequences, just delayed.
 
-    Then because $f$ is differentiable and continuous on $\R$ $\lim s_n = s \implies \lim f(s_n)= f(s) \implies f(s) = s$ and $f$ has a fixed point.
+        Then because $f$ is differentiable and continuous on $\R$ $\lim s_n = s \implies \lim f(s_n)= f(s) \implies f(s) = s$ and $f$ has a fixed point.
 
     \item \textbf{Find $\lim_{x \to 0} \frac{x^3}{\sin x - x}$}
 
@@ -130,7 +131,11 @@ Jesse Cai
 
         $$\lim_{x \to 0}{\frac{\log 1 + 2x}{x}} =  \lim_{x \to 0}{\frac{2}{1+2x}} = 2 \implies \lim_{x \to 0} (1 + 2x)^{\frac{1}{x}} = e^2 $$
 
-        \textbf{ Find $\lim_{x \to \infty}$ }
+    \textbf{ Find $\lim_{y \to \infty} (1 + 2/y)^{y}$ }
+
+        We can rewrite $(1 + 2/y)^{y}$ as $e^\frac{\log(1+2/y)}{y^(-1)}$
+
+        Then by LHopital's rule: $\lim_{y \to \infty}\frac{\log 1 + \frac{2}{y}}{\frac{1}{y}} = \frac{2}{1 + \frac{2}{y}} = 2$
 
     \item \textbf{Let $f$ be differentiable on some interval $(c, \infty)$ and suppose $\lim_{x \to \infty} [f(x) + f'(x)]$. Prove $\lim_{x \to \infty} f(x) = L$ and $\lim_{x \to \infty} f'(x) = 0$.}
 
