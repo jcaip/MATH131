@@ -1,0 +1,73 @@
+\documentclass[10pt,a4paper]{article}
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage{amsmath,amssymb}
+\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\R}{\mathbb{R}}
+\DeclareMathOperator*{\Q}{\mathbb{Q}}
+\DeclareMathOperator*{\N}{\mathbb{N}}
+\DeclareMathOperator*{\I}{\mathbb{I}}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\begin{document} 
+MATH 131 Homework 10
+
+Jesse Cai
+
+304634445
+
+\begin{enumerate}
+    \item \textbf{Calculate the upper and lower Darboux integrals for $f$ on $[0, b]$}
+
+        Let a partition $\pi$ be defined so $t_k = \frac{kb}{n}$. Then $\sup \{f(x) : x \in [t_{k-1}, t_k] \}= t_k$ and $\inf \{f(x) : x \in [t_{k-1}, t_k] \}= 0$ due to the denseness of $\R$ on $\Q$.
+        $$U(f, \pi) = \sum_{k=1}^n t_k ( t_k - t_{k-1}) = \frac{kb}{n} \frac{b}{n} = \left( \frac{b}{n}\right)^2 \sum_{k=1}^n k = \left ( \frac{b}{n} \right )^2 \frac{n(n+1)}{2}$$
+        $$U(f) =  \inf \{ U(f, \pi) : \pi \text{ partition of }  [0, b] \} = \lim_{n \to \infty} \left ( \frac{b}{n}\right)^2 \frac{n(n+1)}{2} = \frac{b^2}{2}$$.
+        $$L(f, \pi) = \sum_{k=1}^n \inf \{ f(x): x \in [t_{k-1}, t_k] \} = \sum_{k=1}^n 0 ( t_k - t_{k-1})  = 0$$
+        $$L(f) =  \sup \{ L(f, \pi) : \pi \text{ partition of }  [0, b] \} = 0$$
+
+        \textbf{ Is $f$ integrable on $[0,b]$?}
+
+        $U(f) \neq L(f)$ so $f$ is not integrable over $[0, b]$, except when $b=0$.
+
+    \item \textbf{Show that the associated Reimann sums converge to the upper integral}
+
+        Plugging, we get that the upper Darboux integral is $\frac{1}{2}$.
+
+        The Reimann sum is given by 
+        $$\sum_{k=1}^n f(\frac{k-1}{n}) (t_k - t_{k-1}) = \sum_{k=1}^n \left(\frac{k-1}{n}\right) \left(\frac{1}{n}\right) = \left(\frac{1}{n^2}\right) \sum_{k=1}^n  (k-1) = \left(\frac{1}{n^2}\right) \sum_{i=0}^{n-1}  i^2 = \left(\frac{1}{n^2}\right) \left( \frac{(n-1)(n)}{2}\right) = \frac{n^2 -n }{2n^2} $$.
+        but then $\lim_{n \to \infty} \frac{n^2 - n}{2n^2} = \frac{1}{2}$. So the Reinman sum converges to the uppder Darboux integral.
+
+    \item \textbf{Prove that if $f$ and $g$ are integrable then so is $f+g$.}
+
+        Take $\pi$ to be some partitoin of $[a,b]$.
+
+        Note that $(f+g)(x) = f(x) + g(x)$ and that $\sup(A+B) \leq \sup(A) + \sup(B)$ and $\inf(A+B) \geq \inf(A) + \inf(B)$.
+        Then $$U(f+g, \pi) = \sum_{k=1}^n \sup\{ f(x)+g(x) : x \in [t_{k-1}, t_k] \} (t_k - t_{k-1}) $$ 
+        $$\leq \sum_{k=1}^n \sup\{ f(x): x \in [t_{k-1}, t_k] \} (t_k - t_{k-1}) + \sum_{k=1}^n \sup\{ g(x): x \in [t_{k-1}, t_k] \} (t_k - t_{k-1})$$
+        $$\leq U(f, \pi) + U(g, \pi)$$
+
+        WLOG this also holds for $\inf$ and thus the lower Darboux sum. 
+
+        Since $U(f+g, \pi) \leq U(f, \pi) + U(g, \pi)$ and $L(f+g, \pi) \geq L(f, \pi) + L(g, \pi)$ 
+
+        $U(f+g) = U(f) + U(g)  = L(f) + L(g) = L(f+g) \implies f+g$  is integrable and is equal to the sum of the twon integrals respectively.
+
+
+    \item \textbf{Show $U(f^2, \pi) -L(f^2, \pi) \leq 2B[U(f, \pi) - L(f, \pi)]$}
+
+        Note that $\forall x,y \in [a,b]: f(x)^2 - f(y)^2 = (f(x) -f(y))(f(x) + f(y)) \leq (f(x) -f(y))(\abs{f(x)} + \abs{f(y)}) \leq 2B(f(x) - f(y)$. 
+
+        Fix some partition $\pi$ of $[a,b]$. Note that if
+
+        \textbf{Show that $f^2$ is integrable if $f$ is.}
+
+        
+    \item 
+
+\end{enumerate}
+\end{document}
