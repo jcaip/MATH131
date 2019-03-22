@@ -62,12 +62,24 @@ Jesse Cai
 
         Note that $\forall x,y \in [a,b]: f(x)^2 - f(y)^2 = (f(x) -f(y))(f(x) + f(y)) \leq (f(x) -f(y))(\abs{f(x)} + \abs{f(y)}) \leq 2B(f(x) - f(y)$. 
 
-        Fix some partition $\pi$ of $[a,b]$. Note that if
+        Fix some partition $\pi$ of $[a,b]$.
+
+        Then for some segment $[t_{k-1}, t_k]$  
+
+        $$\sup_{x,y \in S} [f(x)^2 -f(y)^2] \leq 2B \sup_{x, y \in S} [f(x) - f(y)]$$
+        $$\sup_{x \in S} f(x)^2 - \inf_{y \in S}  f(y)^2 \leq 2B \sup_{x \in S} f(x) - \inf_{y \in S} f(y)$$
+
+        So for any segment $M(f^2, [t_{k-1}, t_k])- m(f^2, [t_{k-1}, t_k] ) \leq 2B [M(f, [t_{k-1}, t_k]) - m (f, [t_{k-1}, t_k])]$
+        
+        $U(f^2, \pi) - L(f^2, \pi) \leq 2B [U(f, \pi) - L(f,\pi)]$
 
         \textbf{Show that $f^2$ is integrable if $f$ is.}
 
-        
-    \item 
+
+        Fix $\epsilon$. Then take $\epsilon' = \frac{\epsilon}{2B}$. Then since $f$ is integrable $\exists \delta > 0 \forall \pi \text{ partition of } [a,b] : mesh(\Pi) < \delta \implies U(f, \pi) - L(f, \pi) < \epsilon'$.
+
+        But then $U(f^2, \pi) - L(f^2, \pi) \leq 2B(U(f, \pi) - L(f, \pi) ) \implies U(f^2, \pi) - L(f^2, \pi) \leq \epsilon$. So $f^2$ is integrable if $f$ is.
+
 
 \end{enumerate}
 \end{document}
